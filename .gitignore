@@ -1,0 +1,22 @@
+.venv/
+data/
+__pycache__/
+.pytest_cache/
+*.log
+
+# Personal runtime state, credentials, caches and working artifacts
+work/
+.env
+.env.*
+!.env.example
+*.sqlite*
+*.db
+*.pem
+*.key
+auth.json
+node_modules/
+/dist/
+/build/
+# Historical local screenshots; published media lives in docs/media instead
+/*.png
+/*.jpg

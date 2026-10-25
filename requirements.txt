@@ -1,0 +1,14 @@
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+python-multipart>=0.0.20
+httpx>=0.28,<1
+PyJWT[crypto]>=2.10,<3
+faster-whisper>=1.2,<2
+av==16.1.0
+yt-dlp>=2026.3.17
+pytest>=8,<10
+nltk>=3.9,<4
+opencc-python-reimplemented==0.1.7
+bilibili-api-python>=17.4,<18
+aiohttp>=3.12,<4
+nvidia-cudnn-cu12>=9,<10; sys_platform == 'win32'

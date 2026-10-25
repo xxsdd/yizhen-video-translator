@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "译帧 · 一键导入视频",
+  "version": "1.0.0",
+  "description": "点击时检测当前网页的视频，交给本机译帧下载并识别字幕。翻译仍需手动启动。",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["http://127.0.0.1:8765/*"],
+  "icons": {"128": "icon.png"},
+  "action": {"default_title": "导入到译帧", "default_popup": "popup.html", "default_icon": "icon.png"},
+  "background": {"service_worker": "background.js"}
+}

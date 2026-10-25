@@ -1,0 +1,4 @@
+{
+  "python_executable": ".venv\\Scripts\\python.exe",
+  "startup_timeout_seconds": 60
+}
