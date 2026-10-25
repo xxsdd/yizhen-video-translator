@@ -6,9 +6,9 @@
 
 ## 一分钟看看它能做什么
 
-[<img src="docs/media/yizhen-promo.jpg" width="300" alt="译帧一分钟竖屏宣传片，点击观看">](docs/media/yizhen-promo.mp4)
+[<img src="docs/media/yizhen-promo.jpg" width="300" alt="译帧一分钟竖屏宣传片，点击观看">](https://xxsdd.github.io/yizhen-video-translator/)
 
-**[观看宣传视频](docs/media/yizhen-promo.mp4)** · **[下载原版 MP4](https://github.com/xxsdd/yizhen-video-translator/releases/download/v0.1.0-preview/yizhen-promo.mp4)**
+**[观看宣传视频](https://xxsdd.github.io/yizhen-video-translator/)** · **[下载原版 MP4](https://github.com/xxsdd/yizhen-video-translator/releases/download/v0.1.0-preview/yizhen-promo.mp4)**
 
 60 秒 / 1080 × 1920 / 无旁白。视频是根据产品界面制作的动画演示，进度经过加速，不代表实际下载或识别耗时。部分界面早于最新版本；目前导入后由用户手动开始下载和处理。素材说明见 [视频署名](docs/media/CREDITS.md)。
 

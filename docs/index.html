@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="一分钟认识译帧：本地视频识别、按需翻译、双语字幕与英汉查词。">
+<title>译帧 · 一分钟产品演示</title>
+<style>
+:root{color-scheme:dark;--bg:#17191f;--text:#eef0f5;--muted:#a9afbf;--line:#363c49;--accent:#b2bdff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei UI","PingFang SC",sans-serif}main{max-width:1080px;min-height:100svh;margin:auto;padding:36px 28px;display:grid;grid-template-columns:minmax(250px,1fr) minmax(260px,420px);gap:70px;align-items:center}h1{font-size:42px;letter-spacing:-2px;margin:0 0 24px}h2{font-size:28px;line-height:1.6;font-weight:500;margin:0 0 22px}p{font-size:15px;line-height:1.9;color:var(--muted);max-width:34em}.brand{display:flex;align-items:center;gap:12px}.mark{display:flex;gap:4px;transform:skewY(-14deg)}.mark i{width:7px;height:30px;background:var(--accent);border-radius:2px}.mark i:nth-child(2){height:38px}.mark i:nth-child(3){opacity:.55}a{color:var(--accent);text-underline-offset:4px}a:focus-visible,button:focus-visible,video:focus-visible{outline:3px solid var(--accent);outline-offset:5px}.actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:28px 0}.primary{background:var(--accent);color:#17191f;padding:13px 18px;border-radius:8px;text-decoration:none;font-weight:600}.small{font-size:12px}.player{min-width:0}video{display:block;width:100%;max-height:80svh;aspect-ratio:9/16;background:#0d1117;border:1px solid var(--line);border-radius:12px}.player-bottom{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:12px;font-size:12px;color:var(--muted)}button{border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--text);padding:9px 13px;font:inherit;cursor:pointer}footer{border-top:1px solid var(--line);padding-top:18px;margin-top:30px;font-size:11px;line-height:1.8;color:var(--muted)}@media(max-width:720px){main{display:flex;flex-direction:column;gap:24px;padding:24px 20px;align-items:stretch}h1{font-size:30px;margin-bottom:12px}h2{font-size:20px;margin:0}.intro>p{margin:10px 0}.actions{margin:18px 0 0}.player{width:min(100%,380px);align-self:center}video{max-height:72svh}footer{margin-top:18px}.intro footer{display:none}}
+</style>
+</head>
+<body><main>
+<section class="intro">
+<h1 class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>译帧</h1>
+<h2>把想看的视频，<br>变成看得懂的视频。</h2>
+<p>导入链接或本地视频，在电脑上识别对白。需要译文时再翻译，遇到生词就查一查。</p>
+<div class="actions"><a class="primary" href="https://github.com/xxsdd/yizhen-video-translator/releases/latest">下载 Windows 安装包</a><a href="https://github.com/xxsdd/yizhen-video-translator">查看项目</a></div>
+<p class="small">60 秒产品演示 · 无旁白<br>模型首次使用需下载；翻译使用你配置的服务额度。</p>
+<footer>产品界面动画演示，进度经过加速。<br>Music: Happy Beats &amp; Business Moves Vol. 12 — Sascha Ende, CC BY 4.0。<a href="media/CREDITS.md">素材署名</a></footer>
+</section>
+<section class="player" aria-label="宣传视频">
+<video id="promo" controls playsinline autoplay muted preload="metadata" poster="media/yizhen-promo.jpg" aria-label="译帧一分钟宣传片"><source src="media/yizhen-promo.mp4" type="video/mp4">浏览器无法播放此视频，<a href="media/yizhen-promo.mp4">下载 MP4</a>。</video>
+<div class="player-bottom"><button id="sound" type="button">开启声音</button><a href="media/yizhen-promo.mp4" download>保存视频</a></div>
+<p class="small" id="status" role="status">默认静音播放，可点击「开启声音」听背景音乐。</p>
+</section>
+</main><script>
+const video=document.getElementById('promo'),sound=document.getElementById('sound'),status=document.getElementById('status');
+sound.onclick=()=>{video.muted=!video.muted;if(video.paused)video.play().catch(()=>{status.textContent='点击视频中央的播放按钮即可观看。'});};
+video.addEventListener('volumechange',()=>{sound.textContent=video.muted?'开启声音':'静音';status.textContent=video.muted?'当前静音播放。':'背景音乐已开启，无旁白。';});
+video.addEventListener('error',()=>{status.textContent='视频暂时加载失败，请刷新重试，或点击「保存视频」。'});
+video.play().catch(()=>{status.textContent='点击播放器上的播放按钮即可观看。'});
+</script></body></html>
