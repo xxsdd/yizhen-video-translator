@@ -13,13 +13,16 @@ import time
 import urllib.request
 
 ROOT = Path(__file__).resolve().parent
-URL = "http://127.0.0.1:8765"
-DATA = ROOT / "data"
+PORT = int(os.environ.get('VTS_PORT', '8765'))
+if not 1024 <= PORT <= 65535:
+    raise ValueError('VTS_PORT 必须在 1024–65535 之间')
+URL = f"http://127.0.0.1:{PORT}"
+DATA = Path(os.environ.get('VTS_DATA_DIR', str(ROOT / 'data'))).resolve()
 LOG = logging.getLogger("yizhen-launcher")
 
 
 def configure_log():
-    DATA.mkdir(exist_ok=True)
+    DATA.mkdir(parents=True, exist_ok=True)
     handler = logging.FileHandler(DATA / "launcher.log", encoding="utf-8")
     formatter = logging.Formatter("%(asctime)sZ %(levelname)s %(message)s", "%Y-%m-%dT%H:%M:%S")
     formatter.converter = time.gmtime
@@ -106,11 +109,15 @@ def ensure_service():
         for key in ("PYTHONHOME", "PYTHONPATH", "PYTHONEXECUTABLE", "__PYVENV_LAUNCHER__", "_PYVENV_LAUNCHER", "VIRTUAL_ENV"):
             env.pop(key, None)
         env.update(PYTHONUTF8="1", PYTHONIOENCODING="utf-8", HF_HUB_DISABLE_SYMLINKS_WARNING="1")
+        env['VTS_DATA_DIR'] = str(DATA)
+        bundled_tools = ROOT / 'tools'
+        if bundled_tools.is_dir():
+            env['PATH'] = str(bundled_tools) + os.pathsep + env.get('PATH', '')
         server_log = DATA / "server.log"
         offset = server_log.stat().st_size if server_log.exists() else 0
         with server_log.open("ab", buffering=0) as output:
             proc = subprocess.Popen(
-                [str(executable), "-X", "utf8", "-m", "uvicorn", "app:app", "--host", "127.0.0.1", "--port", "8765", "--no-access-log"],
+                [str(executable), "-X", "utf8", "-m", "uvicorn", "app:app", "--host", "127.0.0.1", "--port", str(PORT), "--no-access-log"],
                 cwd=ROOT, env=env, stdout=output, stderr=output,
                 stdin=subprocess.DEVNULL, creationflags=subprocess.CREATE_NO_WINDOW,
             )

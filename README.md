@@ -24,9 +24,17 @@
 - **调整观看方式**：深浅主题、全屏、倍速；悬停字幕后拖动位置、调整字号，保存观看进度。
 - **自己挑封面**：下载完成后随机抽取 5 张画面，点选保存，也可以换一批。
 
-## 本地安装
+## Windows 一键安装
 
-目前提供源码运行方式，未提供 Windows 一键安装包。
+**[下载安装包 · Windows x64](https://github.com/xxsdd/yizhen-video-translator/releases/download/v0.1.1/Yizhen-Setup-0.1.1-Windows-x64.exe)** · [发布说明与 SHA256 校验](https://github.com/xxsdd/yizhen-video-translator/releases/tag/v0.1.1)
+
+下载安装 EXE，选择位置并完成安装，然后双击桌面「译帧」。安装包约 1.3 GB，安装后约占 3 GB；包含独立 Python、FFmpeg、CPU/NVIDIA GPU 识别依赖和英汉词典，无需手动配置开发环境。
+
+首次打开后，在设置中选择识别模型并点击「准备模型」，需联网下载，large-v3 另需约 3 GB。新安装默认使用 CPU；有兼容 NVIDIA 显卡时可在设置中切换 GPU，显卡驱动需由系统提供。翻译仍使用你自己配置的服务或可用额度。
+
+安装版数据保存在安装目录的 `data/`，卸载会保留本地数据。安装包尚未代码签名，发布页提供 SHA256 校验值。当前为预览版本，已在本机的独立安装目录验证，不代表所有 Windows 配置都已测试。
+
+## 从源码运行（开发者）
 
 需要：Windows 10/11、Python 3.12、[uv](https://docs.astral.sh/uv/)、[FFmpeg](https://ffmpeg.org/download.html)（包含 `ffprobe`，加入 PATH）。使用 GPU 识别还需要兼容的 NVIDIA 驱动；没有适用 GPU 可在设置中选 CPU。
 
@@ -81,6 +89,6 @@ Python / FastAPI / SQLite · FFmpeg · yt-dlp · faster-whisper · OpenCC · 原
 .\.venv\Scripts\python.exe -X utf8 -m pytest -q
 ```
 
-本次发布前本地 **118 项测试通过**。测试使用独立临时数据目录，覆盖任务控制、翻译续传、字幕编辑、封面抽帧、简体转换等；另外验证了浏览器端字幕显示切换和封面选择。测试通过不代表所有网站、GPU 或第三方模型都已验证。
+本次发布前本地 **120 项测试通过**。测试使用独立临时数据目录，覆盖任务控制、翻译续传、字幕编辑、封面抽帧、简体转换等；另外验证了浏览器端字幕显示切换和封面选择。测试通过不代表所有网站、GPU 或第三方模型都已验证。
 
 [第三方组件与素材说明](THIRD_PARTY_NOTICES.md)

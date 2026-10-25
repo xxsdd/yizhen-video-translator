@@ -105,7 +105,7 @@ DEFAULT = {
         {"id": "zhipu", "name": "智谱 AI / GLM", "base_url": "https://open.bigmodel.cn/api/paas/v4", "model": "", "key": ""},
         {"id": "custom", "name": "自定义兼容服务", "base_url": "", "model": "", "key": ""},
     ],
-    "default_provider": "deepseek", "target": "zh", "asr_model": "large-v3", "device": "cuda", "conversion_device": "auto"
+    "default_provider": "deepseek", "target": "zh", "asr_model": "large-v3", "device": os.environ.get('VTS_DEFAULT_DEVICE', 'cuda'), "conversion_device": "auto"
 }
 
 
